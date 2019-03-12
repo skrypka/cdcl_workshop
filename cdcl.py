@@ -21,7 +21,7 @@ class Var(NamedTuple):
 
 
 Clause = Dict[int, bool]
-CNF = List[Dict[int, bool]]
+CNF = List[Clause]
 State = List[Var]
 Result = Dict[int, bool]
 
@@ -77,7 +77,7 @@ def read_dimacs(dimacs_str: str) -> CNF:
 
 
 def unit_resolution_once(cnf: CNF, state: State) -> State:
-    """Iterate once over clauses and do unit propogation on CNF
+    """Iterate once over clauses and do unit propagation on CNF
 
     Args:
         cnf: CNF
