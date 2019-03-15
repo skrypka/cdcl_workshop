@@ -102,8 +102,14 @@ def unit_resolution(cnf: CNF, state: State) -> State:
     Returns:
         new updated state
     """
-    # TODO
-    pass
+    previous_len = len(state)
+    while True:
+        state = unit_resolution_once(cnf, state)
+        if len(state) > previous_len:
+            previous_len = len(state)
+        else:
+            break
+    return state
 
 
 def cdcl(cnf: CNF, state: Optional[State] = None) -> Result:
